@@ -1,3 +1,4 @@
+import http from 'node:http';
 import { api } from './api';
 import { env } from './env';
 import logger from './infra/logger/pino';
@@ -6,9 +7,9 @@ export function apiProvider(): void {
   try {
     logger.info('⏳ Setting up and initialize api');
 
-    api.listen(env.PORT);
-
-    logger.info(`✅ Api listening on port ${env.PORT}`);
+    http.createServer(api).listen(env.PORT, () => {
+      logger.info(`✅ Api listening on port ${env.PORT}`);
+    });
   } catch (error) {
     logger.error(error, 'Error on init API', 'API');
   }
@@ -23,9 +24,5 @@ export async function server(): Promise<void> {
 }
 
 server().catch(error =>
-  logger.error(
-    error,
-    '🛑 Error during server inicialization. Description:\n',
-    'API',
-  ),
+  logger.error(error, '🛑 Error during server inicialization.', 'API'),
 );
