@@ -10,7 +10,7 @@
         "postbuild": "tsc-alias -p tsconfig.json",
         "start": "node build/server.js",
         "prepare": "husky install",
-        "test": "vitest",
+        "test": "export $(cat ./env/.env.test | xargs) && vitest",
         "lint": "tsc --noEmit && eslint . --no-error-on-unmatched-pattern",
         "lint:fix": "npm run lint -- --fix"
     },
