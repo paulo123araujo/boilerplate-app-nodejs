@@ -43,5 +43,7 @@ export default antfu({
     'ts/no-redeclare': 'off',
     'ts/consistent-type-imports': 'off',
     'ts/consistent-type-definitions': 'off',
+    'test/prefer-lowercase-title': 'off',
+    'curly': ['error', 'all'],
   },
 });

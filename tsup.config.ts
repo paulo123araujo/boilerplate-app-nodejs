@@ -3,7 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   tsconfig: './tsconfig.json',
   entry: ['./src/**/*.ts'],
-  splitting: true,
+  splitting: false,
   sourcemap: true,
   clean: true,
   platform: 'node',
@@ -16,4 +16,5 @@ export default defineConfig({
   treeshake: true,
   dts: false,
   outDir: 'build',
+  skipNodeModulesBundle: true,
 });
