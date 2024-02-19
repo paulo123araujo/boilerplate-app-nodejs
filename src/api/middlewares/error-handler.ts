@@ -8,8 +8,9 @@ export function errorHandler(
   res: Response,
   next: NextFunction,
 ) {
-  if (!error)
+  if (!error) {
     next();
+  }
 
   if (error instanceof ValidationError) {
     res.status(400).json({
